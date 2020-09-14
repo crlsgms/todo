@@ -1,2 +1,2 @@
 //carregando o webserver
-require ('.config/server')
+require ('./config/server')
