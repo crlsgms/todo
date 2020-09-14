@@ -1,0 +1,17 @@
+{
+    "descricao": "almoçar",
+    "quem": "todos",
+    "quando": "12h50",
+    "prioridade" "alta",
+}
+
+
+
+
+descricao: {type: String, required: true},
+        quem: {type: String, required: true},
+        onde: {type: String, required: true},
+        quando: {type: String, required: true},
+        prioridade: {type: String, required: true},
+        feita: {type: Boolean, required: true, default: false},
+        criacao: {type: Date, default: Date.now}
