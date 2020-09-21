@@ -9,7 +9,7 @@ export default class Menu extends Component {
                 <div className="container">
                     {/* cabeçalho da barra de navegação */}
                     <div className="navbar-header">
-                        <a className="nav-bar-brand" href="#">
+                        <a className="nav-bar-brand" href="/todo">
                             <i className="fa fa-calendar-check-o"> Todo App </i>
                         </a>
                     </div>
@@ -17,7 +17,7 @@ export default class Menu extends Component {
                     <div id="navbar" className="navbar-collapse collapse">
                         {/* lista de opções */}
                         <ul className="nav navbar-nav">
-                            <li> <a href="/tarefas"> Tarefas </a> </li>
+                            <li> <a href="/todo"> Tarefas </a> </li>
                             <li> <a href="/sobre"> Sobre </a> </li>
                         </ul>
                     </div>

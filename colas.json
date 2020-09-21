@@ -30,7 +30,8 @@ pasta> create-react-app frontend
  npm install --save-dev bootstrap
 
 # agora instala a dependencia pra usar rotas no react
-frontend>   npm install --save-dev react-router-dom
+frontend>   npm install --save-dev react-router
+            npm install --save-dev react-router-dom
             npm install --save-dev history
 
 
