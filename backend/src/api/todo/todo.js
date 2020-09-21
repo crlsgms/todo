@@ -5,12 +5,12 @@ const restful = require('node-restful')
 const mongoose = restful.mongoose
 
 // cria o esquema do documento no db
+// removido o quando: {type: String, required: true}, 
 const todoSchema = new mongoose.Schema(
     {
         descricao: {type: String, required: true},
         quem: {type: String, required: true},
         onde: {type: String, required: true},
-        quando: {type: String, required: true},
         prioridade: {type: String, required: true},
         feita: {type: Boolean, required: true, default: false},
         criacao: {type: Date, default: Date.now}

@@ -15,3 +15,22 @@ descricao: {type: String, required: true},
         prioridade: {type: String, required: true},
         feita: {type: Boolean, required: true, default: false},
         criacao: {type: Date, default: Date.now}
+
+
+#210910 criando o ambiente do front do react
+pasta> create-react-app frontend
+ //opções se nao tiver o react, npm install create-react-app, (npx create-react-app frontend)
+
+ para usar um projeto novo do zero, apague todo o conteudo de /frontend/src/*.*
+
+ como usamos o ambiente separado em scripts no packages.json
+ npm run dev
+
+ # instalando o sass (no frontend)
+ npm install --save-dev bootstrap
+
+# agora instala a dependencia pra usar rotas no react
+frontend>   npm install --save-dev react-router-dom
+            npm install --save-dev history
+
+
