@@ -40,5 +40,11 @@ npm i --save-dev cors
     cria o arquivo cors.js em /backend/src/config
     refs: https://create-react-app.dev/docs/proxying-api-requests-in-development/
 
+depois do cors, precisa criar o form pra inserção
+novo arquivo em /frontend/src/TodoForm.jsx
+
+instala o AXIOS que faz isso isso e aquilo 
+    frontend> npm install --save-dev axios
+
 
 

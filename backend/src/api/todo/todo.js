@@ -11,7 +11,7 @@ const todoSchema = new mongoose.Schema(
         descricao: {type: String, required: true},
         quem: {type: String, required: true},
         onde: {type: String, required: true},
-        prioridade: {type: String, required: true},
+        prioridade: {type: Number, required: true},
         feita: {type: Boolean, required: true, default: false},
         criacao: {type: Date, default: Date.now}
     }
