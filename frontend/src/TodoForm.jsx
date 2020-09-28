@@ -11,8 +11,33 @@ export default class TarefaForm extends Component {
             quem: "",
             onde: "",
             prioridade: 0,
+            lista:[]
         }
+        this.buscaTarefas() // atualiza a lista de tarefas
     }
+    
+    //busca a lista de tarefas utilizando api GET
+    buscaTarefas(){
+        Axios.get('http://localhost:3003/api/todos')
+        .then(resposta => this.setState({lista: resposta.data}))
+    }
+
+    //método para popular as linhas da tabela de consulta nas tarefas
+    //percorrendo a lista de tarefas usando a função map
+    criaLinhasTabela(){
+        return (
+            this.state.lista.map( cadaTarefa => (
+                <tr key={cadaTarefa._id}>
+                    <td> {cadaTarefa.descricao} </td>
+                    <td> {cadaTarefa.quem} </td>
+                    <td> {cadaTarefa.onde} </td>
+                    <td> {cadaTarefa.prioridade} </td>
+                    <td> {(cadaTarefa.criacao.toLocaleString())} </td>
+                </tr>
+        ))
+        )
+    }
+    
     //captura de valores
     setDescricao(e) {
         this.setState({ descricao: e.target.value })
@@ -38,6 +63,7 @@ export default class TarefaForm extends Component {
         //consumindo o método post para inserir uma tarefa
         Axios.post('http://localhost:3003/api/todos', novaTarefa)
             .then(resposta => console.log(resposta.data))
+            this.buscaTarefas() // atualiza a lista
     }
 
     render() {
@@ -69,6 +95,24 @@ export default class TarefaForm extends Component {
                 </div>
                 <div className="form-group">
                     <button className="btn btn-primary" type="button" onClick={e => this.cadastrar()}> Cadastrar </button>
+                </div>
+                {/* exibir a lista de tarefas do banco */}
+                <div className="container">
+                    Lista de tarefas
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th> Descrição </th>
+                                <th> Quem </th>
+                                <th> Onde </th>
+                                <th> Prioridade </th>
+                                <th> Criada em </th>
+                            </tr>
+                        </thead>
+                        <tbody> {/*cria uma linha para cada entrada do banco (tarefa)*/}
+                            {this.criaLinhasTabela()}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )
