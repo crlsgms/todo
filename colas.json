@@ -6,8 +6,6 @@
 }
 
 
-
-
 descricao: {type: String, required: true},
         quem: {type: String, required: true},
         onde: {type: String, required: true},
@@ -32,6 +30,15 @@ pasta> create-react-app frontend
 # agora instala a dependencia pra usar rotas no react
 frontend>   npm install --save-dev react-router
             npm install --save-dev react-router-dom
-            npm install --save-dev history
+            npm install --save-dev history 
+            
+        */
+
+#280920 aula front continuidade            
+instalação do cors, pra permitir as requisições cruzadas para o banco
+npm i --save-dev cors
+    cria o arquivo cors.js em /backend/src/config
+    refs: https://create-react-app.dev/docs/proxying-api-requests-in-development/
+
 
 
