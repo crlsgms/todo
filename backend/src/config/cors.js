@@ -8,5 +8,5 @@ module.exports = function(requisicao, resposta, sequencia){
     resposta.header("Access-Control-Allow-Methods", 'GET,POST,PUT,DELETE');
     // configura o cabeçalho da resposta
     resposta.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept" );
-    sequencia()
+    sequencia();
 }

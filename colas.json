@@ -66,4 +66,15 @@ instala o AXIOS que faz isso isso e aquilo
     frontend> npm install --save-dev axios
 
 
+ //entradas crud
+    // remover(tarefa){
+    //     Axios.delete('http://localhost:3003/api/todos/${tarefa._id}').then( e => this.buscaTarefas())
+    // }
+
+
+    <td>
+    <button type="button" className="btn btn-danger" onClick={e => this.remover(cadaTarefa)}> Remove </button>
+    <button style={cadaTarefa.feita ? { display: "none" } : null} type="button" className="btn btn-warning" onClick={e => this.marcaComoFeita(cadaTarefa)}> Feita </button>
+    <button style={cadaTarefa.feita ? { display: "none" } : null} type="button" className="btn btn-warning" onClick={e => this.marcaComoDesFeita(cadaTarefa)}> Desfeita </button>
+</td>
 

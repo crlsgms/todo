@@ -16,6 +16,5 @@ const todoSchema = new mongoose.Schema(
         criacao: {type: Date, default: Date.now}
     }
 )
-
 //esporta o esquema 
 module.exports = restful.model('Todo', todoSchema)
