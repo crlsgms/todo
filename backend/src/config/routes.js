@@ -10,8 +10,8 @@ module.exports = function (servidor){
     servidor.use('/api', router)
 
     //rota para o todo
-    const todoServico = require('../api/todo/todoServico')
-    // a rota completa para acessar a api sera /api/todos
-    // http://servidor:3003/api/todos
-    todoServico.register(router, '/todos')
+    const partidaServico = require('../api/todo/partidaServico')
+    // a rota completa para acessar a api sera /api/partidas
+    // http://servidor:3003/api/partidas
+    partidaServico.register(router, '/partidas')
 }

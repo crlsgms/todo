@@ -1,12 +1,12 @@
 // importa o esquema
-const Todo = require('./todo')
+const Partida = require('./partida')
 
 // informar os métodos REST vamos utilizar
-Todo.methods(['get', 'post', 'put', 'delete'])
+Partida.methods(['get', 'post', 'put', 'delete'])
 // ajustar opções de update
 // new: true -> depois de atualizado, retorna a nova tarefa
 // runValidators: true -> ao atualizar, os campos obrigatórios devem continuar
-Todo.updateOptions({new: true, runValidators: true})
+Partida.updateOptions({new: true, runValidators: true})
 
 //exportar
-module.exports = Todo
+module.exports = Partida

@@ -5,7 +5,7 @@ import {Router, Route, Redirect, Switch} from  'react-router-dom'
 import {createBrowserHistory} from 'history'
 
 //importa as rotas criadas nos .jsx
-import Todo from './Todo'
+import Partida from './Partida'
 import Sobre from './Sobre'
 
 //obter o histórico do navegador
@@ -15,9 +15,9 @@ const history = createBrowserHistory()
 export default props => (
     <Router history={history}>
         <Switch>
-            <Route path="/todo" component={Todo}/>
+            <Route path="/partidas" component={Partida}/>
             <Route path="/sobre" component={Sobre}/>
-            <Redirect from="*" to="/todo"/>
+            <Redirect from="*" to="/partidas"/>
         </Switch>
     </Router>
 )

@@ -1,4 +1,19 @@
-reqs do mongo:
+pra prova:[
+    carlos: Jogo (codigo, timeA, timeB, local, data)
+    usar alguma flag on /off (realizado / não)
+]
+
+//## bootstrap
+
+adicionando o bootstrap via SASS
+cria um arquivo no /frontend/src/App.scss
+    @import "~bootstrap/scss/bootstrap";
+
+e adiciona no indes.jsx
+    import './App.scss'
+
+
+//reqs do mongo:
     mongo
     show databases
     use todo

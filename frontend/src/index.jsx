@@ -1,4 +1,8 @@
-//importa biblioiteca do react
+//import bootstrap react
+//import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+//importa biblioteca do react
 import React from 'react'
 //importa biblioteca do react-dom para renderização
 import ReactDom from 'react-dom'
