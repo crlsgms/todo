@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-// import toggle?
+import Toggle from 'react-bootstrap-toggle'
+//import { Bootstrap2Toggle } from 'react-bootstrap-toggle';
 
 export default class PartidaForm extends Component {
     //construtor
@@ -8,6 +9,7 @@ export default class PartidaForm extends Component {
         super() // chama construtor da superclasse
         //inicializando as variaveis de classe
         this.state = {
+            // toggleActive: false,
             partida: "",
             timeA: "",
             timeB: "",
@@ -17,6 +19,19 @@ export default class PartidaForm extends Component {
             lista: []
         }
         this.buscaPartidas() // atualiza a lista de tarefas
+        this.onToggle = this.onToggle.bind(this);
+        const agora = new Date();
+    }
+
+    onToggle(cadaPartida) {
+        // this.setState({ toggleActive: !this.state.toggleActive })
+        // console.log('cadaPartida: ', cadaPartida);
+        // cadaPartida.realizado = !cadaPartida.realizado
+        // if para inverter a flag de realizado do jogo-
+        if (cadaPartida.realizado === true) {
+            return this.marcaPendente(cadaPartida);
+        }
+        return this.marcaComoRealizada(cadaPartida);
     }
 
     //busca a lista de tarefas utilizando api GET
@@ -25,6 +40,7 @@ export default class PartidaForm extends Component {
             .then(resposta => this.setState({ lista: resposta.data }))
         //atualiza o formulário
         //this.buscaPartidas()
+        // console.log('this.state.lista', this.state.lista);
     }
 
     //método para popular as linhas da tabela de consulta nas tarefas
@@ -37,21 +53,31 @@ export default class PartidaForm extends Component {
                     <td> {cadaPartida.timeA} </td>
                     <td> {cadaPartida.timeB} </td>
                     <td> {cadaPartida.local} </td>
-                    <td> {cadaPartida.realizado} </td>
+                    {/* <td> {cadaPartida.realizado} </td> */}
+                    <td><Toggle
+                        onClick={e => this.onToggle(cadaPartida)}
+                        on={<h4>Realizada</h4>}
+                        off={<h4>Agendada</h4>}
+                        size="xs"
+                        offstyle="warning"
+                        onstyle="success"
+                        active={cadaPartida.realizado}
+                    /></td>
                     <td> {cadaPartida.agendado} </td>
                     <td>
-                        <button type="button" className="btn btn-danger" onClick={e => this.remover(cadaPartida)}>  Remove </button> </td>
+                        <button type="button" className="btn btn-danger" onClick={e => this.remover(cadaPartida)}><span class="glyphicon glyphicon-trash"></span></button> </td>
+                    {/* entradas de teste para trocar o hide / display por um botão de toggle
                     <td>
-                        <button style={cadaPartida.realizado ? { display: "none" } : null} type="button" className="btn btn-warning" onClick={e => this.marcaComoRealizada(cadaPartida)}> Realizada </button>
+                        <button style={cadaPartida.realizado ? { display: "none" } : null} type="button" className="btn btn-success" onClick={e => this.marcaComoRealizada(cadaPartida)}> Realizada </button>
 
                         <button style={!cadaPartida.realizado ? { display: "none" } : null} type="button" className="btn btn-warning" onClick={e => this.marcaPendente(cadaPartida)}> Agendada </button>
-                    </td>
-                    <td>
+                    </td> */}
+                    {/* <td>
                         <input type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger"></input>
                     </td>
                     <td>
                         <input type="checkbox" data-on="Realizado" data-off="Programado" data-toggle="toggle" data-onstyle="success" data-offstyle="warning"></input>
-                    </td>
+                    </td>  */}
                 </tr>
             ))
         )
@@ -70,8 +96,9 @@ export default class PartidaForm extends Component {
         //AXIOS: dependencia para consumir APIs em RESTFUL
         //consumindo o método post para inserir uma tarefa
         Axios.post('http://localhost:3003/api/partidas', novaPartida)
-            .then(resposta => console.log(resposta.data))
-        this.buscaPartidas() // atualiza a lista
+            .then(e => this.buscaPartidas())
+        // .then(partida => console.log(this.agendado));
+        //this.buscaPartidas() // era pra atualizar a lista mas não funciona :(
     }
     remover(partida) {
         const url = `http://localhost:3003/api/partidas/${partida._id}`
@@ -154,7 +181,7 @@ export default class PartidaForm extends Component {
                 </div>
                 <div className="form-group"> {/* grupo de dados (label e input)*/}
                     <label htmlFor="agendado"> Agenda </label>
-                    <input className="form-control" type="text" value={this.state.agendado}
+                    <input className="form-control" type="date" value={this.state.agendado}
                         onChange={e => this.setAgendado(e)}>
                     </input>
                 </div>
@@ -171,8 +198,9 @@ export default class PartidaForm extends Component {
                                 <th> Time A </th>
                                 <th> Time B </th>
                                 <th> Local </th>
-                                <th> Realizado </th>
-                                <th> Agendado </th>
+                                <th> Situação </th>
+                                <th> Data agendada </th>
+                                <th> Excluir </th>
                             </tr>
                         </thead>
                         <tbody> {/*cria uma linha para cada entrada do banco (partida)*/}
@@ -180,6 +208,14 @@ export default class PartidaForm extends Component {
                         </tbody>
                     </table>
                 </div>
+                {/* <div>
+                    <h2>teste date</h2>
+                    var date = new Date(Date.UTC(2012, 11, 12, 3, 0, 0));
+
+                    // toLocaleDateString() sem argumentos depende da implementação,
+                    // o locale padrão, e o time zone padrão
+                    console.log(date.toLocaleDateString());
+                </div> */}
             </div>
         )
     }
